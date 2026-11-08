@@ -134,3 +134,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Taste skill temporary profiles and logs
+.taste-skill/
+shots/
+

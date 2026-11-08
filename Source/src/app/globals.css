@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #08070d;
+  --color-background-elevated: #111018;
+  --color-surface: #15131d;
+  --color-surface-hover: #1b1728;
+  --color-border: rgba(255, 255, 255, 0.14);
+
+  --color-primary: #762bff;
+  --color-primary-bright: #8d45ff;
+  --color-primary-deep: #3b087f;
+  --color-lavender: #c8a8ff;
+
+  --color-text: #f8f7fc;
+  --color-text-muted: #c5c0d0;
+  --color-text-subtle: #8e889b;
+
+  --font-display: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-text: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #762bff;
+  color: #f8f7fc;
+}
+
+:focus-visible {
+  outline: 2px solid #8d45ff !important;
+  outline-offset: 2px !important;
+}
+
+/* TasteSkill Standard Container */
+.wrap {
+  width: min(100% - 48px, 1280px);
+  margin-inline: auto;
+  padding-inline: 0;
+  position: relative;
+}
+
+@media (min-width: 1440px) {
+  .wrap {
+    width: min(100% - 160px, 1280px);
+  }
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 44px;
+  padding-inline: 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: #762bff;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(118, 43, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background-color: #8d45ff;
+  box-shadow: 0 0 35px rgba(141, 69, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 44px;
+  padding-inline: 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: #15131d;
+  color: #f8f7fc;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background-color: #1b1728;
+  border-color: rgba(200, 168, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Taste Card Style */
+.auren-card {
+  background-color: #15131d;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auren-card:hover {
+  background-color: #1b1728;
+  border-color: rgba(141, 69, 255, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(118, 43, 255, 0.2);
+}
+
+/* Typography Scale */
+h1 {
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Auren Custom Responsive Grids bypassing TasteSkill .grid > * override */
+.auren-grid-4 {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.auren-grid-4 > * {
+  grid-column: auto !important;
+}
+
+@media (max-width: 1023px) {
+  .auren-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .auren-grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.auren-grid-2 {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.auren-grid-2 > * {
+  grid-column: auto !important;
+}
+
+@media (max-width: 768px) {
+  .auren-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.auren-grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.auren-grid-3 > * {
+  grid-column: auto !important;
+}
+
+@media (max-width: 1023px) {
+  .auren-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Allow Tailwind column spans to override system.css .grid > * */
+.grid > .col-span-1 { grid-column: span 1 / span 1 !important; }
+.grid > .col-span-2 { grid-column: span 2 / span 2 !important; }
+.grid > .col-span-3 { grid-column: span 3 / span 3 !important; }
+.grid > .col-span-4 { grid-column: span 4 / span 4 !important; }
+.grid > .col-span-5 { grid-column: span 5 / span 5 !important; }
+.grid > .col-span-6 { grid-column: span 6 / span 6 !important; }
+.grid > .col-span-7 { grid-column: span 7 / span 7 !important; }
+.grid > .col-span-8 { grid-column: span 8 / span 8 !important; }
+.grid > .col-span-9 { grid-column: span 9 / span 9 !important; }
+.grid > .col-span-10 { grid-column: span 10 / span 10 !important; }
+.grid > .col-span-11 { grid-column: span 11 / span 11 !important; }
+.grid > .col-span-12 { grid-column: span 12 / span 12 !important; }
+
+@media (min-width: 640px) {
+  .grid > .sm\:col-span-1 { grid-column: span 1 / span 1 !important; }
+  .grid > .sm\:col-span-2 { grid-column: span 2 / span 2 !important; }
+  .grid > .sm\:col-span-3 { grid-column: span 3 / span 3 !important; }
+  .grid > .sm\:col-span-4 { grid-column: span 4 / span 4 !important; }
+  .grid > .sm\:col-span-6 { grid-column: span 6 / span 6 !important; }
+}
+
+@media (min-width: 768px) {
+  .grid > .md\:col-span-1 { grid-column: span 1 / span 1 !important; }
+  .grid > .md\:col-span-2 { grid-column: span 2 / span 2 !important; }
+  .grid > .md\:col-span-3 { grid-column: span 3 / span 3 !important; }
+  .grid > .md\:col-span-4 { grid-column: span 4 / span 4 !important; }
+  .grid > .md\:col-span-6 { grid-column: span 6 / span 6 !important; }
+  .grid > .md\:col-span-8 { grid-column: span 8 / span 8 !important; }
+  .grid > .md\:col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+@media (min-width: 1024px) {
+  .grid > .lg\:col-span-1 { grid-column: span 1 / span 1 !important; }
+  .grid > .lg\:col-span-2 { grid-column: span 2 / span 2 !important; }
+  .grid > .lg\:col-span-3 { grid-column: span 3 / span 3 !important; }
+  .grid > .lg\:col-span-4 { grid-column: span 4 / span 4 !important; }
+  .grid > .lg\:col-span-5 { grid-column: span 5 / span 5 !important; }
+  .grid > .lg\:col-span-6 { grid-column: span 6 / span 6 !important; }
+  .grid > .lg\:col-span-7 { grid-column: span 7 / span 7 !important; }
+  .grid > .lg\:col-span-8 { grid-column: span 8 / span 8 !important; }
+  .grid > .lg\:col-span-9 { grid-column: span 9 / span 9 !important; }
+  .grid > .lg\:col-span-10 { grid-column: span 10 / span 10 !important; }
+  .grid > .lg\:col-span-11 { grid-column: span 11 / span 11 !important; }
+  .grid > .lg\:col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+/* Ambient cosmic floating cloud animation */
+@keyframes nebulaDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate3d(15px, -12px, 0) scale(1.04);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.65;
+  }
+}
+
+.animate-nebula {
+  animation: nebulaDrift 14s ease-in-out infinite;
+}
+
+.animate-nebula-delayed {
+  animation: nebulaDrift 18s ease-in-out -7s infinite;
+}
+
+.footer--dark {
+  background: transparent !important;
+  color: #F8F7FC !important;
+}
+
+/* Eyebrow Badge Celestial Idle Float & Luminous Breathing Animation */
+@keyframes badgeFloat {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 0 18px rgba(118, 43, 255, 0.25), 0 4px 18px rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 0 32px rgba(141, 69, 255, 0.55), 0 8px 26px rgba(0, 0, 0, 0.5);
+    border-color: rgba(141, 69, 255, 0.55);
+  }
+}
+
+.animate-badge-float {
+  animation: badgeFloat 4.5s ease-in-out infinite;
+}

@@ -1,8 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Blackhole } from "./Blackhole";
 
+const ROTATING_PHRASES = [
+  "become, one day at a time.",
+  "grow in your own rhythm.",
+  "master your daily focus.",
+  "nurture mind, body, and soul.",
+  "elevate every small step.",
+];
+
 export function HeroSection() {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setPhraseIndex((prev) => (prev + 1) % ROTATING_PHRASES.length);
+        setIsTransitioning(false);
+      }, 450);
+    }, 4200);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -21,16 +50,25 @@ export function HeroSection() {
 
       {/* Main Content Vertical Stack: Slogan Diatas -> Blackhole Ditengah -> Start & Explore Dibawah */}
       <div className="wrap relative z-20 my-auto flex flex-col items-center text-center">
-        {/* 1. TEXT SLOGAN & SUBTITLE DIATAS */}
+        {/* 1. TEXT SLOGAN & SUBTITLE DIATAS DENGAN TYPOGRAPHY DINAMIS & IDLE ANIMATION */}
         <div className="flex flex-col items-center max-w-4xl mx-auto">
           {/* Slogan Headline: Bold, Crisp & Luminous */}
           <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold tracking-[-0.035em] text-white leading-[1.08]">
             <span className="block drop-shadow-[0_2px_18px_rgba(0,0,0,0.9)]">
-              Build a life you love:
+              Build a Life you Love:
             </span>
-            <span className="block mt-1.5 font-normal italic bg-gradient-to-r from-white via-[#E9D5FF] via-50% to-[#A855F7] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.55)]">
-              become, one day at a time.
-            </span>
+            <div className="relative min-h-[1.25em] h-[1.25em] flex items-center justify-center overflow-visible mt-1.5">
+              <span
+                aria-live="polite"
+                className={`font-normal italic bg-gradient-to-r from-white via-[#E9D5FF] via-50% to-[#A855F7] bg-clip-text text-transparent transition-all duration-500 ease-out select-none animate-phrase-glow ${
+                  isTransitioning
+                    ? "opacity-0 -translate-y-2.5 filter blur-[3px] scale-[0.98]"
+                    : "opacity-100 translate-y-0 filter-none scale-100"
+                }`}
+              >
+                {ROTATING_PHRASES[phraseIndex]}
+              </span>
+            </div>
           </h1>
 
           {/* Supporting Proposition */}

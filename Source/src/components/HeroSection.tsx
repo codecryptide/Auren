@@ -46,9 +46,9 @@ export function HeroSection() {
 
         {/* 3. DIBAWAHNYA: BADGE COMPANION + START & EXPLORE DENGAN JARAK, HOVER, DAN GLOW */}
         <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
-          {/* Eyebrow Badge (Tanpa Dot, Berjarak Lebih Lega ke Atas, dan Dilengkapi Animasi Idle Float & Glow) */}
-          <div className="group cursor-default inline-flex items-center justify-center px-5 py-2 rounded-full bg-[#15131D]/90 border border-white/[0.14] text-[11px] sm:text-xs font-mono tracking-[0.22em] text-[#C8A8FF] uppercase mb-8 mt-2 backdrop-blur-xl animate-badge-float hover:border-[#8D45FF]/80 hover:bg-[#1C172C]/95 hover:text-white hover:-translate-y-1.5 hover:scale-[1.02] hover:shadow-[0_0_36px_rgba(141,69,255,0.7)] transition-all duration-300 select-none">
-            <span className="group-hover:text-white transition-colors duration-300 font-medium">
+          {/* Eyebrow Badge (Tanpa Dot, Statis Tanpa Motion, Animasi Idle pada Teks & Hover pada Wadah) */}
+          <div className="group cursor-default inline-flex items-center justify-center px-5 py-2 rounded-full bg-[#15131D]/90 border border-white/[0.14] text-[11px] sm:text-xs font-mono tracking-[0.22em] uppercase mb-8 mt-2 backdrop-blur-xl shadow-[0_0_18px_rgba(118,43,255,0.2)] hover:border-[#8D45FF]/70 hover:bg-[#1C172C]/95 hover:shadow-[0_0_30px_rgba(141,69,255,0.5)] transition-all duration-300 select-none">
+            <span className="animate-text-shimmer font-medium group-hover:text-white group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)] transition-all duration-300">
               Personal Growth &amp; Lifestyle Companion
             </span>
           </div>

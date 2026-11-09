@@ -299,20 +299,40 @@ h3 {
   color: #F8F7FC !important;
 }
 
-/* Eyebrow Badge Celestial Idle Float & Luminous Breathing Animation */
-@keyframes badgeFloat {
-  0%, 100% {
-    transform: translateY(0px);
-    box-shadow: 0 0 18px rgba(118, 43, 255, 0.25), 0 4px 18px rgba(0, 0, 0, 0.45);
-    border-color: rgba(255, 255, 255, 0.14);
+/* Eyebrow Badge Celestial Text Idle Shimmer & Glow Animation (Zero Container Motion) */
+@keyframes textShimmer {
+  0% {
+    background-position: -200% 0;
   }
-  50% {
-    transform: translateY(-5px);
-    box-shadow: 0 0 32px rgba(141, 69, 255, 0.55), 0 8px 26px rgba(0, 0, 0, 0.5);
-    border-color: rgba(141, 69, 255, 0.55);
+  100% {
+    background-position: 200% 0;
   }
 }
 
-.animate-badge-float {
-  animation: badgeFloat 4.5s ease-in-out infinite;
+@keyframes textGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(200, 168, 255, 0.35));
+    opacity: 0.92;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.75)) drop-shadow(0 0 20px rgba(141, 69, 255, 0.45));
+    opacity: 1;
+  }
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #B9A6D9 0%,
+    #C8A8FF 25%,
+    #FFFFFF 50%,
+    #E9D5FF 75%,
+    #B9A6D9 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmer 4.5s ease-in-out infinite, textGlow 3.5s ease-in-out infinite;
+  display: inline-block;
 }
